@@ -43,7 +43,7 @@ public abstract class Driver<T extends Transport>{
     @Override
     public String toString() {
         return "Водитель " + getName() +
-                " категории *" + getDrivingLicense() + "* " +
+                " категории *" + getDrivingLicense() + "*" +
                 " управляет автомобилем " +
                 getTransport().toString() +
                 " и будет участвовать в заезде";

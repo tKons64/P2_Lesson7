@@ -1,9 +1,16 @@
 import Driver.DriverB;
 import Driver.DriverC;
 import Driver.DriverD;
+import Other.Mechanic;
+import Other.Sponsor;
 import Transports.Bus;
 import Transports.Car;
+import Transports.Transport;
 import Transports.Truck;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,10 +45,56 @@ public class Main {
         DriverB driverCar = new DriverB("DriverCar", 10, crAudi);
         DriverC driverTruck = new DriverC("DriverTruck", 2, trMaz);
         DriverD driverBus = new DriverD("DriverBus", 7, bsIkarus);
-        System.out.println(driverCar);
-        System.out.println(driverTruck);
-        System.out.println(driverBus);
+//        System.out.println(driverCar);
+//        System.out.println(driverTruck);
+//        System.out.println(driverBus);
 
         //Урок 7. Домашне задание 1
+        System.out.println("");
+        System.out.println("Урок 7. Домашне задание 1");
+
+        Mechanic<Car> boris = new Mechanic<>("Борис", "Россия");
+        Mechanic<Truck> petr = new Mechanic<>("Петр", "Россия");
+        Mechanic<Transport> ivan = new Mechanic<>("Иван", "Россия");
+        Mechanic<Car> jonh = new Mechanic<>("Джон", "Германия");
+        Mechanic<Truck> frank = new Mechanic<>("Френк", "Швеция");
+
+        Sponsor spElonMusk = new Sponsor("Илон Маск", Sponsor.TypeSponsor.INDIVIDUAL, 1_000_000);
+        Sponsor spGoogle = new Sponsor("Google", Sponsor.TypeSponsor.COMPANY, 7_000_000);
+        Sponsor spGazProm = new Sponsor("Газпром", Sponsor.TypeSponsor.COMPANY, 200_000);
+        Sponsor spPotanin = new Sponsor("Потанин", Sponsor.TypeSponsor.INDIVIDUAL, 50_000);
+
+        crLada.addDriver(driverCar);
+        crLada.addSponsors(spPotanin, spGazProm);
+        crLada.addMechanics(boris, ivan);
+
+        trScania.addDriver(driverTruck);
+        trScania.addSponsors(spGoogle, spElonMusk);
+        trScania.addMechanics(frank, ivan);
+
+        bsKamaz.addDriver(driverBus);
+        bsKamaz.addSponsors(spGazProm);
+        bsKamaz.addMechanics(ivan);
+
+        List<Transport> racingCars = List.of(
+                crLada,
+                trScania,
+                bsKamaz);
+
+        for (Transport transport: racingCars) {
+            printDataTransport(transport);
+        }
     }
+
+    public static void printDataTransport(Transport transport) {
+        System.out.println("Автомобиль " + transport.getBrand() + " " + transport.getModel() +
+                ", управляется водителем - " + transport.getDriver());
+        System.out.println("Спонсоры:");
+        System.out.println(transport.getSponsors());
+        System.out.println("Механики:");
+        System.out.println(transport.getMechanics());
+        System.out.println();
+
+    }
+
 }
