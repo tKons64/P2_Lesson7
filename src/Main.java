@@ -42,5 +42,6 @@ public class Main {
         System.out.println(driverTruck);
         System.out.println(driverBus);
 
+        //Урок 7. Домашне задание 1
     }
 }
