@@ -1,16 +1,12 @@
 import Driver.DriverB;
 import Driver.DriverC;
 import Driver.DriverD;
-import Other.Mechanic;
-import Other.Sponsor;
 import Transports.Bus;
 import Transports.Car;
 import Transports.Transport;
 import Transports.Truck;
 
-import java.sql.Array;
 import java.util.*;
-import java.util.concurrent.BlockingQueue;
 
 public class Main {
     public static void main(String[] args) {
@@ -100,22 +96,52 @@ public class Main {
 //        trService.toService();
 
         //Урок 7. Домашне задание 3
-        Queue<String> cashDeskN1 = new ArrayDeque<>(5);
-        cashDeskN1.offer("Покупатель1");
-        cashDeskN1.offer("Покупатель2");
-        cashDeskN1.offer("Покупатель3");
-        Queue<String> cashDeskN2 = new ArrayDeque<>(5);
-        cashDeskN2.offer("Покупатель4");
-        cashDeskN2.offer("Покупатель5");
-        Queue<String> cashDeskN3 = new ArrayDeque<>(5);
-        Queue[] arrСashDesks = new ArrayList<>().toArray(new Queue[2]);
-        arrСashDesks[0] = cashDeskN1;
-        arrСashDesks[1] = cashDeskN2;
+//        Queue<String> cashDeskN1 = new ArrayDeque<>(5);
+//        cashDeskN1.offer("Покупатель1");
+//        cashDeskN1.offer("Покупатель2");
+//        cashDeskN1.offer("Покупатель3");
+//        Queue<String> cashDeskN2 = new ArrayDeque<>(5);
+//        cashDeskN2.offer("Покупатель4");
+//        cashDeskN2.offer("Покупатель5");
+//        Queue<String> cashDeskN3 = new ArrayDeque<>(5);
+//        Queue[] arrСashDesks = new ArrayList<>().toArray(new Queue[2]);
+//        arrСashDesks[0] = cashDeskN1;
+//        arrСashDesks[1] = cashDeskN2;
+//
+//        addNewBuyer(arrСashDesks, 5, cashDeskN3);
+//
+//        System.out.println();
+//        deleteBuyer(arrСashDesks);
 
-        addNewBuyer(arrСashDesks, 5, cashDeskN3);
-
+        //Урок 7. Домашне задание 4
         System.out.println();
-        deleteBuyer(arrСashDesks);
+        System.out.println("Урок 7. Домашнее задание 4");
+        example();
+
+    }
+
+    public static void example() {
+        List<List<String>> biDemArrList;
+        biDemArrList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            biDemArrList.add(i, new ArrayList<>());
+            for (int j = 0; j < 8; j++) {
+                if ((i % 2) > 0 && (j % 2) > 0) {
+                    biDemArrList.get(i).add(j, "◯");
+                } else if ((i % 2) == 0 && (j % 2) == 0) {
+                    biDemArrList.get(i).add(j, "◯");
+                } else {
+                    biDemArrList.get(i).add(j, "●");
+                }
+            }
+        }
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(biDemArrList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
     }
 
     public static void addNewBuyer(Queue<String>[] arrСashDesks, int count, Queue<String> reserveCashDesk) {
