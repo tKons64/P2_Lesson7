@@ -50,40 +50,56 @@ public class Main {
 //        System.out.println(driverBus);
 
         //Урок 7. Домашне задание 1
-        System.out.println("");
-        System.out.println("Урок 7. Домашне задание 1");
+//        System.out.println("");
+//        System.out.println("Урок 7. Домашнее задание 1");
+//
+//        Mechanic<Car> boris = new Mechanic<>("Борис", "Россия");
+//        Mechanic<Truck> petr = new Mechanic<>("Петр", "Россия");
+//        Mechanic<Transport> ivan = new Mechanic<>("Иван", "Россия");
+//        Mechanic<Car> jonh = new Mechanic<>("Джон", "Германия");
+//        Mechanic<Truck> frank = new Mechanic<>("Френк", "Швеция");
+//
+//        Sponsor spElonMusk = new Sponsor("Илон Маск", Sponsor.TypeSponsor.INDIVIDUAL, 1_000_000);
+//        Sponsor spGoogle = new Sponsor("Google", Sponsor.TypeSponsor.COMPANY, 7_000_000);
+//        Sponsor spGazProm = new Sponsor("Газпром", Sponsor.TypeSponsor.COMPANY, 200_000);
+//        Sponsor spPotanin = new Sponsor("Потанин", Sponsor.TypeSponsor.INDIVIDUAL, 50_000);
+//
+//        crLada.addDriver(driverCar);
+//        crLada.addSponsors(spPotanin, spGazProm);
+//        crLada.addMechanics(boris, ivan);
+//
+//        trScania.addDriver(driverTruck);
+//        trScania.addSponsors(spGoogle, spElonMusk);
+//        trScania.addMechanics(frank, ivan);
+//
+//        bsKamaz.addDriver(driverBus);
+//        bsKamaz.addSponsors(spGazProm);
+//        bsKamaz.addMechanics(ivan);
+//
+//        List<Transport> racingCars = List.of(
+//                crLada,
+//                trScania,
+//                bsKamaz);
+//
+//        for (Transport transport: racingCars) {
+//            printDataTransport(transport);
+//        }
 
-        Mechanic<Car> boris = new Mechanic<>("Борис", "Россия");
-        Mechanic<Truck> petr = new Mechanic<>("Петр", "Россия");
-        Mechanic<Transport> ivan = new Mechanic<>("Иван", "Россия");
-        Mechanic<Car> jonh = new Mechanic<>("Джон", "Германия");
-        Mechanic<Truck> frank = new Mechanic<>("Френк", "Швеция");
+        //Урок 7. Домашне задание 2
+        System.out.println();
+        System.out.println("Урок 7. Домашнее задание 2");
 
-        Sponsor spElonMusk = new Sponsor("Илон Маск", Sponsor.TypeSponsor.INDIVIDUAL, 1_000_000);
-        Sponsor spGoogle = new Sponsor("Google", Sponsor.TypeSponsor.COMPANY, 7_000_000);
-        Sponsor spGazProm = new Sponsor("Газпром", Sponsor.TypeSponsor.COMPANY, 200_000);
-        Sponsor spPotanin = new Sponsor("Потанин", Sponsor.TypeSponsor.INDIVIDUAL, 50_000);
+        ServiceStation<Car> crService = new ServiceStation<Car>("Автосервис легковых автомобилей");
 
-        crLada.addDriver(driverCar);
-        crLada.addSponsors(spPotanin, spGazProm);
-        crLada.addMechanics(boris, ivan);
+        crService.addTransports(crLada, crKia, crAudi, crBMW);
+        crService.toService();
 
-        trScania.addDriver(driverTruck);
-        trScania.addSponsors(spGoogle, spElonMusk);
-        trScania.addMechanics(frank, ivan);
+        ServiceStation<Truck> trService = new ServiceStation<Truck>("Автосервис грузовых автомобилей");
 
-        bsKamaz.addDriver(driverBus);
-        bsKamaz.addSponsors(spGazProm);
-        bsKamaz.addMechanics(ivan);
+        trService.addTransports(trKamaz, trScania, trVolvo, trMaz);
+        trService.toService();
 
-        List<Transport> racingCars = List.of(
-                crLada,
-                trScania,
-                bsKamaz);
 
-        for (Transport transport: racingCars) {
-            printDataTransport(transport);
-        }
     }
 
     public static void printDataTransport(Transport transport) {

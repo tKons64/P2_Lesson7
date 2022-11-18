@@ -28,7 +28,7 @@ public class Sponsor {
     }
 
     public void toSponsorRace() {
-        System.out.printf("Спонсор  s% проспонсировал заезд на сумму - s%", getName(), getAmount());
+        System.out.printf("Спонсор s% проспонсировал заезд на сумму - d%", getName(), getAmount());
     }
 
     public String getName() {
