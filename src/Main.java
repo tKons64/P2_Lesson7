@@ -114,6 +114,8 @@ public class Main {
 
         addNewBuyer(arrСashDesks, 5, cashDeskN3);
 
+        System.out.println();
+        deleteBuyer(arrСashDesks);
     }
 
     public static void addNewBuyer(Queue<String>[] arrСashDesks, int count, Queue<String> reserveCashDesk) {
@@ -139,15 +141,21 @@ public class Main {
             System.out.println("Покупатель - " + count + " добавлен в очередь - " + minSizeСashDesk);
             addNewBuyer(arrСashDesks, count, reserveCashDesk);
         }
+    }
 
-        if (minSizeСashDesk.size() > 6) {
-            return;
-        } else {
-            //addNewBuyer(arrСashDesks, count, reserveCashDesk);
-        }
+    public static void deleteBuyer(Queue<String>[] arrСashDesks) {
+        int numberСashDesk = (int)Math.round(Math.random());
+        int numberBuyer = (int)Math.round(Math.random()*arrСashDesks[numberСashDesk].size());
+        String buyer = (String) arrСashDesks[numberСashDesk].toArray()[numberBuyer];
+
+        System.out.println(arrСashDesks[numberСashDesk]);
+        System.out.println(buyer);
+        arrСashDesks[numberСashDesk].remove(buyer);
+        System.out.println(arrСashDesks[numberСashDesk]);
     }
 
     public static void printDataTransport(Transport transport) {
+
         System.out.println("Автомобиль " + transport.getBrand() + " " + transport.getModel() +
                 ", управляется водителем - " + transport.getDriver());
         System.out.println("Спонсоры:");
