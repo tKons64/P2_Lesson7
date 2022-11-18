@@ -9,8 +9,8 @@ import Transports.Transport;
 import Transports.Truck;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.BlockingQueue;
 
 public class Main {
     public static void main(String[] args) {
@@ -86,20 +86,65 @@ public class Main {
 //        }
 
         //Урок 7. Домашне задание 2
-        System.out.println();
-        System.out.println("Урок 7. Домашнее задание 2");
+//        System.out.println();
+//        System.out.println("Урок 7. Домашнее задание 2");
+//
+//        ServiceStation<Car> crService = new ServiceStation<Car>("Автосервис легковых автомобилей");
+//
+//        crService.addTransports(crLada, crKia, crAudi, crBMW);
+//        crService.toService();
+//
+//        ServiceStation<Truck> trService = new ServiceStation<Truck>("Автосервис грузовых автомобилей");
+//
+//        trService.addTransports(trKamaz, trScania, trVolvo, trMaz);
+//        trService.toService();
 
-        ServiceStation<Car> crService = new ServiceStation<Car>("Автосервис легковых автомобилей");
+        //Урок 7. Домашне задание 3
+        Queue<String> cashDeskN1 = new ArrayDeque<>(5);
+        cashDeskN1.offer("Покупатель1");
+        cashDeskN1.offer("Покупатель2");
+        cashDeskN1.offer("Покупатель3");
+        Queue<String> cashDeskN2 = new ArrayDeque<>(5);
+        cashDeskN2.offer("Покупатель4");
+        cashDeskN2.offer("Покупатель5");
+        Queue<String> cashDeskN3 = new ArrayDeque<>(5);
+        Queue[] arrСashDesks = new ArrayList<>().toArray(new Queue[2]);
+        arrСashDesks[0] = cashDeskN1;
+        arrСashDesks[1] = cashDeskN2;
 
-        crService.addTransports(crLada, crKia, crAudi, crBMW);
-        crService.toService();
+        addNewBuyer(arrСashDesks, 5, cashDeskN3);
 
-        ServiceStation<Truck> trService = new ServiceStation<Truck>("Автосервис грузовых автомобилей");
+    }
 
-        trService.addTransports(trKamaz, trScania, trVolvo, trMaz);
-        trService.toService();
+    public static void addNewBuyer(Queue<String>[] arrСashDesks, int count, Queue<String> reserveCashDesk) {
+        count++;
+        String newBuyer = "Покупатель" + count;
+        Queue<String> minSizeСashDesk = null;
+        for (int i = 0; i < arrСashDesks.length; i++) {
+            if (minSizeСashDesk == null || minSizeСashDesk.size() > arrСashDesks[i].size()) {
+                minSizeСashDesk = arrСashDesks[i];
+            } else if (minSizeСashDesk.size() > arrСashDesks[i].size()) {
+                minSizeСashDesk = arrСashDesks[i];
+            }
+        }
+        if (minSizeСashDesk == reserveCashDesk && minSizeСashDesk.size() == 5) {
+            System.out.println("Все очереди заняты - ожидайте!");
+            return;
+        } else if (minSizeСashDesk.size() == 5) {
+            System.out.println("Просьбу позвать Галю!");
+            arrСashDesks[0] = reserveCashDesk;
+            addNewBuyer(arrСashDesks, count - 1, reserveCashDesk);
+        } else {
+            minSizeСashDesk.add(newBuyer);
+            System.out.println("Покупатель - " + count + " добавлен в очередь - " + minSizeСashDesk);
+            addNewBuyer(arrСashDesks, count, reserveCashDesk);
+        }
 
-
+        if (minSizeСashDesk.size() > 6) {
+            return;
+        } else {
+            //addNewBuyer(arrСashDesks, count, reserveCashDesk);
+        }
     }
 
     public static void printDataTransport(Transport transport) {
